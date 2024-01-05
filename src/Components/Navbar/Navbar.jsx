@@ -1,74 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-const Navbar = () => {
-  return (
-   <header className="header" data-header>
-  <div  className="container">
-    <h1>
-      <Link  to="/home" className="logo">Cargo Compass</Link>
-    </h1>
-    <nav className="navbar" data-navbar>
-      <div className="navbar-top">
-        <Link to="/home"  className="logo">Cargo Compass</Link>
-        <button className="nav-close-btn" aria-label="Clsoe menu" data-nav-toggler>
-        </button>
-      </div>
-      <ul className="navbar-list">
-        <li className="navbar-item">
-          <Link to="/home" className="navbar-link" data-nav-link>
-            <span>Home</span>
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <a to="/about" className="navbar-link" data-nav-link>
-            <span>About</span>
-          </a>
-        </li>
-        <li className="navbar-item">
-          <Link to="/service" className="navbar-link" data-nav-link>
-            <span>Service</span>
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/blog" className="navbar-link" data-nav-link>
-            <span>Blog</span>
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/contact" className="navbar-link" data-nav-link>
-            <span>Contact</span>
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/login" className="navbar-link" data-nav-link>
-            <button className="login-button">Giriş Yap</button>
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/signup" className="navbar-link" data-nav-link>
-            <button className="register-button">Kaydol</button>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-    <div className="header-contact">
-      <div>
-        <p className="contact-label">ATÜ</p>
-        <Link to="tel:12345678910" className="contact-number">542 295 6686</Link>
-      </div>
-      <div className="contact-icon">
-      <FontAwesomeIcon icon={faPhone} />
-      </div>
-    </div>
-    <button className="nav-open-btn" aria-label="Open menu" data-nav-toggler>
-      <ion-icon name="menu-outline" />
-    </button>
-    <div className="overlay" data-nav-toggler data-overlay />
-  </div>
-</header>
 
+export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleNavbar = () => {
+    setIsActive(!isActive);
+  };
+
+  const closeNavbar = () => {
+    setIsActive(false);
+  };
+
+  const navItems = [
+    { href: "/home", text: "Home" },
+    { href: "#about", text: "About" },
+    { href: "#service", text: "Service" },
+    { href: "/contact", text: "Contact" },
+    { href: "/login", text: "Login", isButton: true },
+    { href: "/signup", text: "Signup", isButton: true },
+  ];
+
+  return (
+    <header id="top" className={`header ${isScrolled ? 'scrolled' : ''}`} data-header>
+      <div className="container">
+        <h1>
+          <Link to="/home" className="logo">Cargo Compass</Link>
+        </h1>
+        <nav className={`navbar ${isActive ? 'active' : ''}`} data-navbar>
+          <div className="navbar-top">
+            <Link to="/home" className="logo">Cargo Compass</Link>
+            <button className="nav-close-btn" aria-label="Close menu" onClick={toggleNavbar}></button>
+          </div>
+          <ul className="navbar-list">
+            {navItems.map((item, index) => (
+              <li key={index} className="navbar-item">
+                {item.isButton ? (
+                  <Link to={item.href} className="navbar-link" onClick={closeNavbar}>
+                    <button className={item.text === "Giriş Yap" ? "login-button" : "register-button"}>{item.text}</button>
+                  </Link>
+                ) : (
+                  <a href={item.href} className="navbar-link" onClick={closeNavbar}>
+                    <span>{item.text}</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="header-contact">
+          {/* ... rest of your header contact items */}
+        </div>
+        <button className="nav-open-btn" aria-label="Open menu" onClick={toggleNavbar}>
+          <ion-icon name="menu-outline" />
+        </button>
+        <div className={`overlay ${isActive ? 'active' : ''}`} onClick={closeNavbar} data-overlay />
+      </div>
+    </header>
   );
 };
-export default Navbar;

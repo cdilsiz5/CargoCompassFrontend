@@ -1,9 +1,7 @@
 import React from 'react'
 import heroShape from '../Assets/hero-shape.png'
 import heroBanner from '../Assets/hero-banner.jpg'
-import { Link } from 'react-router-dom'
-import './Hero.css'
-import Navbar from '../Navbar/Navbar'
+import { Navbar } from '../Navbar/Navbar'
 export const Hero = () => {
   return (
     <section className="hero" aria-label="home" id="home"
@@ -21,7 +19,7 @@ export const Hero = () => {
         <p className="hero-text">
               There are many variations of passages of worem Ipsum available, but the majority
         </p>
-        <Link href="/services" style={{textDecoration:'none',color:'white'}} className="btn-outline">View Services</Link> 
+        <a href="#services"  className="btn-outline">View Services</a> 
         <img 
           src={heroShape}
           width="116" 

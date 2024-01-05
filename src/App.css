@@ -308,8 +308,6 @@ body {
   font-family: var(--ff-oswald);
   color: var(--white);
   font-size: 3rem;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .nav-open-btn {
@@ -346,7 +344,9 @@ body {
   border-block-end: 1px solid var(--plutinum);
   padding: 30px 20px;
 }
-
+.header.scrolled {
+  background-color: var(--black);
+}
 .navbar-top .logo {
   color: var(--onyx);
   font-size: 3rem;
@@ -365,10 +365,6 @@ body {
   align-items: center;
   padding: 15px;
   transition: var(--transition);
-  font-family: var(--ff-rubik);
-  text-decoration: none;
-  font-size: 1.6rem;
-
 }
 
 .navbar-link:is(:hover, :focus) {
@@ -442,7 +438,6 @@ body {
   text-transform: none;
 }
 
- 
 .hero-text { margin-block: 20px 15px; }
 
 .btn-outline {
@@ -949,11 +944,6 @@ body {
     font-size: var(--fs-6);
     font-weight: var(--fw-600);
     letter-spacing: 1px;
-    color: white;
-    text-decoration: none;
-    font-weight: var(--fw-600);
-    letter-spacing: 1px;
-    font-size: var(--fs-6);
   }
 
   .header .contact-icon {

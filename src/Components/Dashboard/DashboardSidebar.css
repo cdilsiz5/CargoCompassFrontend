@@ -1,0 +1,209 @@
+:root {
+  --ff-oswald: 'Oswald', sans-serif;
+  --ff-rubik: 'Rubik', sans-serif;
+  --dark-orange: hsl(32, 100%, 50%);
+}
+
+.dashboard-sidebar {
+  background-color: #252a48;
+  color: white;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: left 0.3s;
+  font-family: var(--ff-rubik);
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  font-family: var(--ff-oswald);
+  border-bottom: 1px solid #1f233e;
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.nav-item {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+  background-color: purple;
+}
+
+.nav-icon {
+  margin-right: 10px;
+}
+
+.section-title {
+  color: var(--dark-orange);
+  padding: 1rem;
+}
+
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid #1f233e;
+}
+
+.help-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #5e72e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  justify-content: block;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  padding: 10px;
+  background-color: var(white);
+  border-top: 1px solid white;
+  transition: left 0.3s;
+  z-index: 1001;
+}
+
+.user-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: white;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background-color: #1f233e;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 150px;
+  z-index: 1002;
+}
+
+.user-bar:hover .profile-dropdown,
+.user-bar.active .profile-dropdown {
+  display: block;
+}
+
+.logout-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.user-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+.logout-btn:hover {
+  background-color: #d62839;
+}
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1002;
+  background-color: var(--dark-orange);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block; /* Show the toggle button */
+    position: fixed; /* Fixed position */
+    top: 0; /* At the top */
+    left: 0; /* At the left */
+    z-index: 1001; /* Above other content */
+    background-color: var(--dark-orange); /* Styling */
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px; /* Bigger to be easily tapped */
+  }
+
+  .dashboard-sidebar.collapsed {
+    min-width: 0;
+    width: 0; /* Hide the sidebar */
+    overflow: hidden;
+  }
+
+  .sidebar-nav.hidden, .sidebar-section.hidden, .user-bar.hidden {
+    display: none; /* Hide content when sidebar is collapsed */
+  }
+
+  .dashboard-sidebar {
+    position: fixed; /* Stick to the screen */
+    height: 100vh;
+    width: 250px; /* Full sidebar width */
+    transition: width 0.3s; /* Animated toggle effect */
+  }
+
+  .user-bar {
+    position: fixed; /* Fix user bar at the bottom */
+    bottom: 0; /* At the bottom */
+    left: 0; /* Align left */
+    width: 250px; /* Full width */
+    background-color: black; /* Matching style */
+    justify-content:flex-start; /* Space out items */
+    padding: 10px;
+    border-top: 1px solid white; /* Styling */
+    z-index: 1000; /* Above the sidebar */
+  }
+
+  .user-bar .user-icon, .user-bar .user-name {
+    display: inline; /* Show icon and name */
+  }
+
+  /* ... additional styles ... */
+}
+
+/* Additional styles for desktop */
+@media (min-width: 769px) {
+  .sidebar-toggle {
+    display: none; /* Hide toggle button on larger screens */
+  }
+}
