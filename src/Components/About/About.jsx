@@ -10,12 +10,12 @@ export const About = () => {
       <figure className="about-banner img-holder" style={{ '--width': 400, '--height': 720 }}>
         <img src={aboutBanner} width="400" height="720" loading="lazy" alt="" className="img-cover" />
         <img src={aboutShape} width="260" height="170" loading="lazy" alt="" className="abs-img abs-img-1" />
-        <img src={aboutShape} width="500" height="500" loading="lazy" alt="" className="abs-img abs-img-2" />
+        <img src={aboutShape2} width="500" height="500" loading="lazy" alt="" className="abs-img abs-img-2" />
       </figure>
   
       <div className="about-content">
         <p className="section-subtitle">Why Choose Us</p>
-        <h2 className="h2 section-title">We Are Professional Logistics & cargo Agency</h2>
+        <h2 className="section-subtitle">We Are Professional Logistics & cargo Agency</h2>
         <p className="section-text">
           Sed ut perspiciatis unde omnis iste natus error volup tatem accusantium dolorem que laudantium, totam inventore.
         </p>
@@ -80,8 +80,6 @@ export const About = () => {
       </div>
     </div>
   </section>
-  
-
 
   )
 }

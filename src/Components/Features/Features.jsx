@@ -17,7 +17,7 @@ export const Features = () => {
           <div>
             <p class="section-subtitle">Estimation</p>
 
-            <h2 class="h2 section-title">Has a wide range of solutions</h2>
+            <h2 class="section-subtitle">Has a wide range of solutions</h2>
 
             <p class="section-text">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever

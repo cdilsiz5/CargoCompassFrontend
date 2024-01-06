@@ -1,29 +1,9 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
-
+ 
 :root {
-
-  /**
-   * colors
-   */
-
   --green-blue-crayola: hsl(202, 75%, 47%);
   --prussian-blue: hsl(202, 72%, 15%);
   --eerie-black: hsl(210, 11%, 15%);
-  --dark-orange: hsl(32, 100%, 50%);
+  --dark-blue:  #007bff;
   --alice-blue: hsl(203, 100%, 97%);
   --light-gray: hsl(0, 0%, 80%);
   --indigo-dye: hsl(202, 64%, 26%);
@@ -35,10 +15,7 @@
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --onyx: hsl(0, 0%, 24%);
-
-  /**
-   * typography
-   */
+  
 
   --ff-oswald: 'Oswald', sans-serif;
   --ff-rubik: 'Rubik', sans-serif;
@@ -160,11 +137,6 @@ body {
 
 
 
-
-/*-----------------------------------*\
-  #REUSED STYLE
-\*-----------------------------------*/
-
 .container { padding-inline: 15px; }
 
 .section { padding-block: var(--section-padding); }
@@ -201,7 +173,7 @@ body {
 }
 
 .section-subtitle {
-  color: var(--dark-orange);
+  color: var( --dark-blue);
   text-transform: uppercase;
   font-size: var(--fs-6);
   font-family: var(--ff-oswald);
@@ -213,9 +185,8 @@ body {
 .section-text { line-height: 1.4; }
 
 .btn {
-  position: relative;
   color: var(--white);
-  background-color: var(--dark-orange);
+  background-color: var(--dark-blue) !important;
   max-width: max-content;
   font-size: var(--fs-9);
   letter-spacing: 1px;
@@ -228,7 +199,7 @@ body {
   content: "";
   position: absolute;
   transition: var(--transition);
-}
+ }
 
 .btn::before {
   top: 50%;
@@ -243,7 +214,7 @@ body {
   right: -6px;
   bottom: -6px;
   width: 20px;
-  border: 2px solid var(--dark-orange);
+  border: 2px solid var(--dark-blue);
   z-index: -1;
 }
 
@@ -257,7 +228,7 @@ body {
 }
 
 .btn-link {
-  color: var(--dark-orange);
+  color: var(--dark-blue);
   font-size: var(--fs-7);
   text-transform: uppercase;
   display: flex;
@@ -333,7 +304,7 @@ body {
 
 .navbar.active {
   visibility: visible;
-  transform: translateX(300px);
+  transform: translateX(500px);
   transition: 0.5s var(--cubic-out);
 }
 
@@ -369,7 +340,7 @@ body {
 
 .navbar-link:is(:hover, :focus) {
   background-color: var(--cultured-1);
-  color: var(--dark-orange);
+  color: var( --dark-blue);
 }
 
 .overlay {
@@ -391,7 +362,7 @@ body {
 .register-button {
   margin-left: 15px;
   padding: 10px 20px;
-  background-color: darkorange; /* Sarı renk */
+  background-color: var(--dark-blue); /* Sarı renk */
   color: white; /* Beyaz renk metin */
   border: none;
   border-radius: 5px;
@@ -432,7 +403,7 @@ body {
 }
 
 .hero-title .span {
-  color: var(--dark-orange);
+  color: var( --dark-blue);
   font-size: var(--fs-2);
   font-weight: var(--fw-700);
   text-transform: none;
@@ -453,8 +424,8 @@ body {
 }
 
 .btn-outline:is(:hover, :focus) {
-  background-color: var(--dark-orange);
-  border-color: var(--dark-orange);
+  background-color: var(--dark-blue);
+  border-color: var( --dark-blue);
 }
 
 #btn-login{
@@ -552,7 +523,7 @@ body {
 
 .about-icon {
   min-width: max-content;
-  color: var(--dark-orange);
+  color: var(--dark-blue);
   margin-block-start: 8px;
 }
 
@@ -581,13 +552,13 @@ body {
   transition: var(--transition);
 }
 
-.service-card:is(:hover, :focus-within) { border-color: var(--dark-orange); }
+.service-card:is(:hover, :focus-within) { border-color: var( --dark-blue); }
 
 .service-card .card-icon { margin-block-end: 30px; }
 
 .service-card .card-title .span {
   display: inline-block;
-  color: var(--dark-orange);
+  color: var( --dark-blue);
   font-size: var(--fs-3);
   margin-inline-end: 15px;
 }
@@ -625,7 +596,7 @@ body {
   transition: var(--transition);
 }
 
-.feature-card:is(:hover, :focus-within)::before { color: var(--dark-orange); }
+.feature-card:is(:hover, :focus-within)::before { color: var( --dark-blue); }
 
 .feature-card .card-icon {
   background-color: var(--alice-blue);
@@ -659,14 +630,14 @@ body {
 
 .project { background-color: var(--alice-blue); }
 
-.project :is(.section-subtitle, .section-title, .section-text) { text-align: center; }
+.project :is(.section-subtitle,.section-title, .section-text) { text-align: center; }
 
 .project .section-text { margin-block: 20px 50px; }
 
 .project-card { position: relative; }
 
 .project-card .action-btn {
-  background-color: var(--dark-orange);
+  background-color: var(--dark-blue);
   color: var(--white);
   font-size: 28px;
   padding: 16px;
@@ -680,7 +651,7 @@ body {
 .project-card:is(:hover, :focus-within) .action-btn { opacity: 1; }
 
 .project-card .card-tag {
-  color: var(--dark-orange);
+  color: var( --dark-blue);
   font-size: var(--fs-9);
 }
 
@@ -696,7 +667,7 @@ body {
 
 .project-card .card-title { transition: var(--transition); }
 
-.project-card :is(.card-title, .card-link):is(:hover, :focus) { color: var(--dark-orange); }
+.project-card :is(.card-title, .card-link):is(:hover, :focus) { color: var( --dark-blue); }
 
 .project-card .card-link {
   color: var(--prussian-blue);
@@ -757,11 +728,11 @@ body {
   margin-inline: auto 20px;
   margin-block: -80px 20px;
   padding: 20px 25px;
-  box-shadow: -8px 8px 0 var(--dark-orange);
+  box-shadow: -8px 8px 0 var( --dark-blue);
 }
 
 .blog-card .card-meta .span {
-  color: var(--dark-orange);
+  color: var( --dark-blue);
   font-size: var(--fs-3);
   font-weight: var(--fw-700);
   line-height: 0.75;
@@ -777,7 +748,7 @@ body {
   #NEWSLETTER
 \*-----------------------------------*/
 
-.newsletter { background-color: var(--dark-orange); }
+.newsletter { background-color: var( --dark-blue); }
 
 .newsletter .img-holder {
   background-color: transparent;
@@ -853,7 +824,7 @@ body {
   font-size: var(--fs-6);
   max-width: max-content;
   padding-block-end: 10px;
-  border-block-end: 3px solid var(--dark-orange);
+  border-block-end: 3px solid var( --dark-blue);
   margin-block-end: 20px;
 }
 
@@ -914,9 +885,10 @@ body {
    * REUSED STYLE
    */
 
-  .btn {
+  .btn .about {
     font-size: var(--fs-7);
     padding-inline: 30px 60px;
+    background-color: var(--dark-blue);
   }
 
 

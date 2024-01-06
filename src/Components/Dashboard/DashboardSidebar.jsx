@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './DashboardSidebar.css'; // Ensure CSS file is linked
+import {Link} from 'react-router-dom'
+import './DashboardSidebar.css'; 
 
 const DashboardSidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -20,7 +21,7 @@ const DashboardSidebar = () => {
       </button>
       <aside className={`dashboard-sidebar ${showSidebar ? '' : 'collapsed'}`}>
         <div className="sidebar-header">
-          <h1>Cargo Compass</h1>
+          <h1><Link to='/freighterdashboard'>Cargo Compass</Link></h1>
         </div>
         <nav className={`sidebar-nav ${showSidebar ? '' : 'hidden'}`}>
           <a href="#" className="nav-item">
@@ -29,11 +30,11 @@ const DashboardSidebar = () => {
           </a>
           <a href="#" className="nav-item">
             <span className="nav-icon">📦</span>
-            <span className="nav-text">My Cargos</span>
+            <span className="nav-text">My Quotes</span>
           </a>
           <a href="#" className="nav-item">
             <span className="nav-icon">💰</span>
-            <span className="nav-text">Calculate The Price</span>
+            <span className="nav-text">Get Quote</span>
           </a>
           <a href="#" className="nav-item">
             <span className="nav-icon">📄</span>

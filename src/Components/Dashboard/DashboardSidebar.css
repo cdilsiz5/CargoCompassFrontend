@@ -43,7 +43,7 @@
 }
 
 .nav-icon {
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 .section-title {
@@ -64,6 +64,15 @@
   border: none;
   border-radius: 5px;
 }
+.help-btn:hover {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
 
 .user-bar {
   display: flex;
@@ -80,7 +89,9 @@
   transition: left 0.3s;
   z-index: 1001;
 }
-
+.user-bar:hover{
+  background-color: purple;
+}
 .user-icon {
   display: block;
   width: 32px;
@@ -142,7 +153,7 @@
   top: 10px;
   left: 10px;
   z-index: 1002;
-  background-color: var(--dark-orange);
+  background-color: darkslateblue;
   color: white;
   border: none;
   padding: 10px;
@@ -158,7 +169,7 @@
     top: 0; /* At the top */
     left: 0; /* At the left */
     z-index: 1001; /* Above other content */
-    background-color: var(--dark-orange); /* Styling */
+    background-color: darkslateblue; /* Styling */
     border: none;
     color: white;
     padding: 10px;
@@ -176,9 +187,9 @@
   }
 
   .dashboard-sidebar {
-    position: fixed; /* Stick to the screen */
+    position: fixed; 
     height: 100vh;
-    width: 250px; /* Full sidebar width */
+    width: 250px;
     transition: width 0.3s; /* Animated toggle effect */
   }
 
@@ -198,12 +209,10 @@
     display: inline; /* Show icon and name */
   }
 
-  /* ... additional styles ... */
 }
 
-/* Additional styles for desktop */
 @media (min-width: 769px) {
   .sidebar-toggle {
-    display: none; /* Hide toggle button on larger screens */
+    display: none; 
   }
 }

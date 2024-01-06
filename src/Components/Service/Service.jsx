@@ -9,7 +9,7 @@ export const Service = () => {
        <section className="section service" id="service" aria-label="service">
   <div className="container">
     <p className="section-subtitle">All Services</p>
-    <h2 className="h2 section-title">Trusted For Our Services</h2>
+    <h2 className="section-subtitle">Trusted For Our Services</h2>
     <p className="section-text">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since
       the when an

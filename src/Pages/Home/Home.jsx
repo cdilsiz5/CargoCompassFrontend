@@ -24,7 +24,7 @@ const Home = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Pürüzsüz kaydırma efekti için
+      behavior: 'smooth' 
     });
   };
 
