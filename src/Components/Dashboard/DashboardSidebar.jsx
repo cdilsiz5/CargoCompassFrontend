@@ -21,25 +21,25 @@ const DashboardSidebar = () => {
       </button>
       <aside className={`dashboard-sidebar ${showSidebar ? '' : 'collapsed'}`}>
         <div className="sidebar-header">
-          <h1><Link to='/freighterdashboard'>Cargo Compass</Link></h1>
+          <h1><Link to='/fdashboard'>Cargo Compass</Link></h1>
         </div>
         <nav className={`sidebar-nav ${showSidebar ? '' : 'hidden'}`}>
-          <a href="#" className="nav-item">
+          <Link to='/fdashboard' className="nav-item">
             <span className="nav-icon">📊</span>
             <span className="nav-text">Dashboards</span>
-          </a>
-          <a href="#" className="nav-item">
+          </Link>
+          <Link to='/myquotes' className="nav-item">
             <span className="nav-icon">📦</span>
             <span className="nav-text">My Quotes</span>
-          </a>
-          <a href="#" className="nav-item">
+          </Link>
+          <Link to='/getquote' className="nav-item">
             <span className="nav-icon">💰</span>
             <span className="nav-text">Get Quote</span>
-          </a>
-          <a href="#" className="nav-item">
+          </Link>
+          <Link to='/myoffers'className="nav-item">
             <span className="nav-icon">📄</span>
             <span className="nav-text">My Offers</span>
-          </a>
+          </Link>
         </nav>
          
         <div className={`user-bar ${showSidebar ? '' : 'hidden'}`} onClick={toggleProfileOptions}>
