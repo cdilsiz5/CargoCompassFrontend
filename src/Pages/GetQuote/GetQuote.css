@@ -1,11 +1,24 @@
+:root {
+  --sidebar-width: 250px;
+  --primary-color: #007bff;
+  --background-gradient-start: #c2e6f57a;
+  --background-gradient-end: #F4F3F6;
+  --ff-oswald: 'Oswald', sans-serif;
+  --ff-rubik: 'Rubik', sans-serif;
+  --quote-list-bg: #f8f9fa;
+  --quote-card-bg: #ffffff;
+  --quote-card-hover-bg: #e2e6ea;
+  --status-padding: 0.3em 0.6em;
+}
+
 .cargo-request-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  padding-left: 250px; /* Sidebar için yer aç */
+  padding-left: 250px;  
   height: auto;
-  min-height: 100vh; /* Mobil cihazlarda yükseklik otomatik olacak */
+  min-height: 100vh; 
   background: linear-gradient(to right, var(--background-gradient-start), var(--background-gradient-end));
 }
 
@@ -49,6 +62,7 @@
 
 .cargo-request-form button:hover {
   background-color: darken(var(--primary-color), 10%);
+  color: var(--primary-color);
 }
 .error {
   color: #dc3545; /* Kırmızı metin rengi */

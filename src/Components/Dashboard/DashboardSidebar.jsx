@@ -47,7 +47,7 @@ const DashboardSidebar = () => {
             <span className="user-name">Username</span>
             {showProfileOptions && (
               <div className="profile-dropdown">
-                <button href="#" className="user-btn">View Profile</button>
+                <button className="user-btn"><Link to='/userprofile'>View Profile</Link></button>
                 <button className="logout-btn">Log Out</button>
               </div>
             )}

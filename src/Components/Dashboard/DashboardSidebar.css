@@ -1,7 +1,6 @@
 :root {
   --ff-oswald: 'Oswald', sans-serif;
   --ff-rubik: 'Rubik', sans-serif;
-  --dark-orange: hsl(32, 100%, 50%);
 }
 
 .dashboard-sidebar {
@@ -39,7 +38,8 @@
 }
 
 .nav-item:hover {
-  background-color: purple;
+  background-color: darken(var(--primary-color), 10%);
+  color: var(--primary-color);
 }
 
 .nav-icon {
@@ -59,7 +59,7 @@
 .help-btn {
   width: 100%;
   padding: 0.5rem;
-  background-color: #5e72e4;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -67,8 +67,8 @@
 .help-btn:hover {
   width: 100%;
   padding: 0.5rem;
-  background-color: purple;
-  color: white;
+  background-color: white;
+  color: var(--primary-color);
   border: none;
   border-radius: 5px;
 }
@@ -90,7 +90,7 @@
   z-index: 1001;
 }
 .user-bar:hover{
-  background-color: purple;
+  background-color: var(--primary-color);
 }
 .user-icon {
   display: block;

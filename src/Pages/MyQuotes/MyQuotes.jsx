@@ -13,7 +13,7 @@ const QUOTE_STATUS = {
 const MyQuotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('waiting-approval');
+  const [activeTab, setActiveTab] = useState('AWAITING_PICKUP');
   useEffect(() => {
     fetchQuotes(activeTab);
   }, [activeTab]);

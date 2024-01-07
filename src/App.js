@@ -7,6 +7,7 @@ import { FreighterDashboard } from './Pages/FreighterDashboard/FreighterDashboar
 import MyQuotes from './Pages/MyQuotes/MyQuotes';
 import GetQuote from './Pages/GetQuote/GetQuote'; 
 import MyOffers from './Pages/MyOffers/MyOffers'; 
+import UserProfile from './Pages/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path='/myquotes' element={<MyQuotes/>} />
           <Route path='/getquote' element={<GetQuote/>} />
           <Route path='/myoffers' element={<MyOffers/>} />
-          
+          <Route path='/userprofile' element={<UserProfile/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
