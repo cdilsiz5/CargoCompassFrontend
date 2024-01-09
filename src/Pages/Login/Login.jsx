@@ -1,34 +1,46 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Input from '../../Components/Input/Input';
-import heroBanner from '../../Components/Assets/hero-banner.jpg'
-import {Navbar} from '../../Components/Navbar/Navbar'
-import {Footer} from '../../Components/Footer/Footer'
+import heroBanner from '../../Components/Assets/hero-banner.jpg';
+import {Navbar} from '../../Components/Navbar/Navbar';
+import {Footer} from '../../Components/Footer/Footer';
+import Spinner from '../../Components/Spinner/Spinner';
+import {loginHandler} from '../../Redux/authActions';
+import { useNavigate } from "react-router-dom";
+
+
 const Login = (props) => {
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Use the useNavigate hook
+
   useEffect(() => {
     setErrorMessage(undefined);
   }, [userEmail, userPassword]);
 
   const onClickLogin = async (event) => {
-    // event.preventDefault();
-    // const { history, dispatch } = props;
-    // const { push } = history;
-
-    // const creds = {
-    //   userEmail,
-    //   userPassword,
-    // };
-    // setErrorMessage(undefined);
-    // try {
-    //   await dispatch(loginHandler(creds));
-    //   push("/");
-    // } catch (apiError) {
-    //   setErrorMessage(true);
-    // }
+    setLoading(true);
+    const {  dispatch } = props;
+    event.preventDefault();
+     const creds = {
+      userEmail,
+      userPassword,
+    };
+    setErrorMessage(undefined);
+    try {
+      await dispatch(loginHandler(creds));
+      navigate("/fdashboard"); 
+    } catch (apiError) {
+      setTimeout(() => {
+      setErrorMessage(true);
+      },20000)
+    }
+    setLoading(false);
   };
-  const buttonEnabled = userEmail && userPassword;
+
+   const buttonEnabled = userEmail && userPassword;
 
   return (
     <div >
@@ -40,7 +52,7 @@ const Login = (props) => {
           <Input label="Email" name="userEmail" type="text" onChange={(event) => { setUserEmail(event.target.value); }}></Input>
           <Input label="Password" name="userPassword" type="password"onChange={(event) => {setUserPassword(event.target.value);}}></Input>
           {errorMessage && (<div className="alert alert-danger" role="alert">Wrong Email Or Password</div>)}
-          <button  disabled={!buttonEnabled}  className="btn"onClick={onClickLogin}>Login</button>
+          <button     className="btn"onClick={onClickLogin}>{loading ? <Spinner /> : 'Login'}</button>
       </form>
       </div>
       </section>
@@ -48,4 +60,4 @@ const Login = (props) => {
     </div>
   );
 };
-export default Login;
+export default connect()(Login);

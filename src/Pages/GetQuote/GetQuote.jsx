@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './GetQuote.css'; // CSS dosyasını import edin
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
 import Input from '../../Components/Input/Input';
-import Spinner from '../../Components/Sprinner/Spinner';
+import Spinner from '../../Components/Spinner/Spinner';
 const GetQuote = () => {
     const [form, setForm] = useState({
         description: '',

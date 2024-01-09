@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
 import './MyQuotes.css';
-import Spinner from '../../Components/Sprinner/Spinner';
+import Spinner from '../../Components/Spinner/Spinner';
 
 const QUOTE_STATUS = {
   AWAITING_PICKUP: 'Awaiting Pickup',
@@ -52,7 +52,7 @@ const MyQuotes = () => {
     };
 
     return (
-      <div className="quotes-dashboard-container">
+      <div className="quotes-dashboard-container body">
         <DashboardSidebar />
         <main className="quotes-main-content">
           <div className="quotes-header">

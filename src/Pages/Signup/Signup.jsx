@@ -5,6 +5,7 @@ import heroBanner from '../../Components/Assets/hero-banner.jpg'
 import {Navbar} from '../../Components/Navbar/Navbar'
 import {Footer} from '../../Components/Footer/Footer'
 import './Signup.css';
+import {API_USER_URL } from "../../Config";
 
 const Signup =(props)=>{
    const [form,setForm]=useState({
@@ -32,29 +33,32 @@ const Signup =(props)=>{
    
     const onClickSignup = async event => {
         event.preventDefault();
-        const { userFirstName, userLastName, userEmail, userPhoneNumber, userPassword,userGender } = form
+        const { userFirstName, userLastName, userEmail, userPhoneNumber, userPassword, userRole } = form;
         const body = {
-            userFirstName: userFirstName,
-            userLastName: userLastName,
-            userEmail: userEmail,
-            userPhoneNumber: userPhoneNumber,
-            userPassword: userPassword ,
-            userGender: userGender
+            userFirstName,
+            userLastName,
+            userEmail,
+            userPhoneNumber,
+            userPassword,
+            userRole
         };
-        try{
-                       
-            const response =await  axios.post(`http://35.229.96.170/api/auth/signup`, body)
-
-            if(response.status===201){
-                setSuccess(true)
+    
+        try {           
+            const response = await axios.post(`${API_USER_URL}/api/v1/users/register`, body);
+            if (response.status === 201) {
+                setSuccess(true);
             }
-            
-        }catch(error){
-            if(error.response.data.validationErrors){
-              setErrors(error.response.data.validationErrors)
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.validationErrors) {
+                setErrors(error.response.data.validationErrors);
+            } else {
+                // Handle other types of errors
+                console.error("An error occurred:", error);
+                // Optionally, set a generic error message
+                setErrors({ general: "An error occurred. Please try again later." });
             }
         }
-    }
+    };
     const {userFirstName :userFirstNameError,userLastName:userLastNameError,userEmail:userEmailError,userPhoneNumber:userPhoneNumberError,userPassword:userPasswordError} =errors;
     let userPasswordRepeatError ;
     if(form.userPassword!==form.userPasswordRepeat){
@@ -77,10 +81,10 @@ const Signup =(props)=>{
                     <label>Role</label>
                     <div className="form-check row ">
                         <label className="form-check-label col-xl-4">
-                            <input type="radio" className="form-check-input" name="userRole"  value="CARRIER"  onChange={onChange} /> CARRIER
+                            <input type="radio" className="form-check-input" name="userRole"  value="ROLE_CARRIER"  onChange={onChange} /> CARRIER
                         </label>
                         <label className="form-check-label col-xl-4">
-                            <input type="radio" className="form-check-input" name="userRole" value="FREIGHTER"  onChange={onChange}/> FREIGHTER
+                            <input type="radio" className="form-check-input" name="userRole" value="ROLE_FREIGHTER"  onChange={onChange}/> FREIGHTER
                         </label>
                     </div>
                 </div>

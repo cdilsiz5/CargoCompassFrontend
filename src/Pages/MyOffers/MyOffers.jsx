@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
-import Spinner from '../../Components/Sprinner/Spinner';
+import Spinner from '../../Components/Spinner/Spinner';
 import './MyOffers.css';
 import { fetchOffersByStatus } from './fetchOffers';
 
