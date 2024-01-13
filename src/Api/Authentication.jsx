@@ -3,7 +3,7 @@ import TokenService from "./TokenService";
 const instance = axios.create({
   baseURL: {},
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json"
   },
 });
 

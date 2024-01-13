@@ -28,7 +28,7 @@ export const Navbar = () => {
     { href: "/home", text: "Home" },
     { href: "#about", text: "About" },
     { href: "#service", text: "Service" },
-    { href: "/contact", text: "Contact" },
+    { href: "/contacthome", text: "Contact" },
     { href: "/login", text: "Login", isButton: true },
     { href: "/signup", text: "Signup", isButton: true },
   ];
@@ -61,7 +61,6 @@ export const Navbar = () => {
           </ul>
         </nav>
         <div className="header-contact">
-          {/* ... rest of your header contact items */}
         </div>
         <button className="nav-open-btn" aria-label="Open menu" onClick={toggleNavbar}>
           <ion-icon name="menu-outline" />

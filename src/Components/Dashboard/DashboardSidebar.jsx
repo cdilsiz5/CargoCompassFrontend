@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 import './DashboardSidebar.css'; 
+import { connect } from 'react-redux';
+import { logoutSuccess } from '../../Redux/authActions';
 
-const DashboardSidebar = () => {
+const DashboardSidebar = (props) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
-
+  const { isLoggedIn, onLogoutSuccess, username,id } = props;
+  console.log(id)
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -44,19 +47,19 @@ const DashboardSidebar = () => {
          
         <div className={`user-bar ${showSidebar ? '' : 'hidden'}`} onClick={toggleProfileOptions}>
             <span className="user-icon">👤</span>
-            <span className="user-name">Username</span>
+            <span className="user-name">{username}</span>
             {showProfileOptions && (
               <div className="profile-dropdown">
                 <button className="user-btn"><Link to='/userprofile'>View Profile</Link></button>
-                <button className="logout-btn">Log Out</button>
+                <Link to='/'><button  onClick={onLogoutSuccess}  className="logout-btn">Log Out</button></Link>
               </div>
             )}
           </div>
         <div className="sidebar-footer">
-          <button className="help-btn">Contact to us</button>
+        <Link to='/help'><button className="help-btn">Need help?</button></Link> 
         </div>
         <div className="sidebar-footer">
-        <button className="help-btn">Need help?</button>
+        <Link to='/contact'><button className="help-btn">Contact Us</button></Link> 
         </div>
        
       </aside>
@@ -64,4 +67,20 @@ const DashboardSidebar = () => {
   );
 };
 
-export default DashboardSidebar;
+const mapStateToProps = (store) => {
+  return {
+      isLoggedIn: store.isLoggedIn,
+      username: store.userFirstName,
+      id: store.id,
+  }
+
+}
+const mapDispatchProps = (dispatch) => {
+  return {
+    onLogoutSuccess: () => {
+      dispatch(logoutSuccess());
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchProps)(DashboardSidebar)
+

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
 import Spinner from '../../Components/Spinner/Spinner';
 import './MyOffers.css';
+import { connect } from 'react-redux';
 import { fetchOffersByStatus } from './fetchOffers';
 
 const OFFER_STATUS = {
@@ -9,90 +10,100 @@ const OFFER_STATUS = {
     ACCEPTED: 'ACCEPTED',
     REJECTED: 'REJECTED'
 };
-const Offers = () => {
+const Offers = (props) => {
     const [offers, setOffers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedTab, setSelectedTab] = useState(OFFER_STATUS.PENDING);
+//     const{id}=props
+//       useEffect(() => {
+//         setLoading(true);
+//         fetchOffersByStatus(selectedTab,id).then((data) => {
+//           setOffers(data);
+//           setLoading(false);
+//         });
+//       }, [selectedTab]);
 
-    // Tekliflerin API'den alınması
-    //   useEffect(() => {
-    //     setLoading(true);
-    //     fetchOffersByStatus(selectedTab,1).then((data) => {
-    //       setOffers(data);
-    //       setLoading(false);
-    //     });
-    //   }, [selectedTab]);
+//     const fetchOffers = useCallback(() => {
+//         setLoading(true);
+//         fetchOffersByStatus(selectedTab, id).then((data) => {
+//           setOffers(data);
+//           setLoading(false);
+//         });
+//       }, [selectedTab]);
 
-    // const fetchOffers = useCallback(() => {
-    //     setLoading(true);
-    //     fetchOffersByStatus(selectedTab, 1).then((data) => {
-    //       setOffers(data);
-    //       setLoading(false);
-    //     });
-    //   }, [selectedTab]);
-
-    //   useEffect(() => {
-    //     fetchOffers();
-    //   }, [fetchOffers]);
+//       useEffect(() => {
+//         fetchOffers();
+//       }, [fetchOffers]);
 
 
-    // Bu kısım normalde API isteğiyle değiştirilmelidir.
 
-    const fetchOffers = useCallback(() => {
-        setLoading(true);
-        setTimeout(() => {
-            // Örnek veri seti
-            const sampleData = [
-                {
-                    id: 1,
-                    companyName: "Sample Company 1",
-                    cargoDescription: "Cargo 1 Description",
-                    transportType: "Truck",
-                    origin: "Istanbul",
-                    destination: "Ankara",
-                    weight: 5000,
-                    pickupDate: "2024-05-01",
-                    dropoffDate: "2024-05-03",
-                    amount: 12000,
-                    status: "PENDING"
-                },
-                {
-                    id: 2,
-                    companyName: "Sample Company 2",
-                    cargoDescription: "Cargo 2 Description",
-                    transportType: "Van",
-                    origin: "Izmir",
-                    destination: "Bursa",
-                    weight: 1500,
-                    pickupDate: "2024-05-05",
-                    dropoffDate: "2024-05-07",
-                    amount: 14000,
-                    status: "ACCEPTED"
+  
+//     useEffect(() => {
+//         const offerCards = document.querySelectorAll('.offer-card');
+//         offerCards.forEach((card, index) => {
+//             card.style.animation = `slideIn 0.5s ease-out ${(index + 1) * 0.2}s forwards`;
+//         });
+//     }, [offers]);
+//     const handleOfferResponse = (offerId, status) => {
+//         setLoading(true);
+//         // API çağrısı yapmak için örnek kod. Gerçekte burada API isteği yapılacak.
+//         setTimeout(() => {
+//             fetchOffers();
+//         }, 1000);
+//     };
+const fetchOffers = useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+        const sampleData = [
+            {
+                id: 1,
+                companyName: "Sample Company 1",
+                cargoDescription: "Cargo 1 Description",
+                transportType: "Truck",
+                origin: "Istanbul",
+                destination: "Ankara",
+                weight: 5000,
+                pickupDate: "2024-05-01",
+                dropoffDate: "2024-05-03",
+                amount: 12000,
+                status: "PENDING"
+            },
+            {
+                id: 2,
+                companyName: "Sample Company 2",
+                cargoDescription: "Cargo 2 Description",
+                transportType: "Van",
+                origin: "Izmir",
+                destination: "Bursa",
+                weight: 1500,
+                pickupDate: "2024-05-05",
+                dropoffDate: "2024-05-07",
+                amount: 14000,
+                status: "ACCEPTED"
 
-                },
-                // Diğer örnek veriler
-            ];
-            setOffers(sampleData.filter(offer => offer.status === selectedTab));
-            setLoading(false);
-        }, 1000);
-    }, [selectedTab]);
-    useEffect(() => {
+            },
+            // Diğer örnek veriler
+        ];
+        setOffers(sampleData.filter(offer => offer.status === selectedTab));
+        setLoading(false);
+    }, 1000);
+}, [selectedTab]);
+useEffect(() => {
+    fetchOffers();
+}, [fetchOffers]);
+useEffect(() => {
+    const offerCards = document.querySelectorAll('.offer-card');
+    offerCards.forEach((card, index) => {
+        card.style.animation = `slideIn 0.5s ease-out ${(index + 1) * 0.2}s forwards`;
+    });
+}, [offers]);
+const handleOfferResponse = (offerId, status) => {
+    setLoading(true);
+    // API çağrısı yapmak için örnek kod. Gerçekte burada API isteği yapılacak.
+    setTimeout(() => {
         fetchOffers();
-    }, [fetchOffers]);
-    useEffect(() => {
-        const offerCards = document.querySelectorAll('.offer-card');
-        offerCards.forEach((card, index) => {
-            card.style.animation = `slideIn 0.5s ease-out ${(index + 1) * 0.2}s forwards`;
-        });
-    }, [offers]);
-    const handleOfferResponse = (offerId, status) => {
-        setLoading(true);
-        // API çağrısı yapmak için örnek kod. Gerçekte burada API isteği yapılacak.
-        setTimeout(() => {
-            fetchOffers();
-        }, 1000);
-    };
-
+    }, 1000);
+};
 
     return (
         <div className="offers-dashboard-container">
@@ -152,5 +163,14 @@ const Offers = () => {
         </div>
     );
 }
-export default Offers;
-
+const mapStateToProps = (store) => {
+    return {
+        isLoggedIn: store.isLoggedIn,
+        username: store.userFirstName,
+        id: store.id,
+    }
+  
+  }
+  export default connect(mapStateToProps)(Offers)
+  
+  

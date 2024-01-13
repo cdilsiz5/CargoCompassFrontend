@@ -13,11 +13,10 @@ export const Hero = () => {
     <div className="container">
       <div className="hero-content">
         <h2 className="h1 hero-title">
-        <span className="span">Lojistik</span> Dijitalde Başlar
-              Dijitalde Biter
+        <span className="span">Logistic</span> Starts in Digital 
         </h2>
         <p className="hero-text">
-              There are many variations of passages of worem Ipsum available, but the majority
+             The easiest way to ship your cargo.
         </p>
         <a href="#services"  className="btn-outline">View Services</a> 
         <img 

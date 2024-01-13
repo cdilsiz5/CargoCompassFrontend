@@ -1,8 +1,10 @@
 import * as ACTIONS from "./Constants";
 import TokenService from "../Api/TokenService"; 
 import {login,signup,logout } from "../Api/ApiCalls";
+import { useState } from "react";
+
 export const logoutSuccess = () => {
-  logout();
+  //logout();
   return {
     type: ACTIONS.LOGOUT_SUCCESS,
   };
@@ -17,7 +19,6 @@ export const loginSuccess = (authData) => {
 export const loginHandler = (credentials) => {
   return async function (dispatch) {
     const response = await login(credentials);
-    console.log(response)
     if (response.data.accessToken) {
       TokenService.setUser(response.data);
     }
@@ -30,7 +31,6 @@ export const loginHandler = (credentials) => {
       userEmail: credentials.userEmail,
       userPassword: credentials.userPassword,
     };
-  
     dispatch(loginSuccess(authState));
     return response;
   };

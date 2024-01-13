@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import {connect} from 'react-redux';
 import './GetQuote.css'; // CSS dosyasını import edin
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
 import Input from '../../Components/Input/Input';
+import { createQuote } from '../../Api/ApiCalls'; // Import the API call function
 import Spinner from '../../Components/Spinner/Spinner';
-const GetQuote = () => {
+const GetQuote = (props) => {
+    const { id,username } = props; 
     const [form, setForm] = useState({
         description: '',
-        userId: '',
+        userId: id,
         weight: '',
         dimensions: '',
         transportType: '',
@@ -49,14 +52,20 @@ const GetQuote = () => {
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); 
-        setTimeout(() => {
-            console.log('Form submitted:', form);
-            setLoading(false); 
+        try {
+            const response = await createQuote(form);
+            console.log('Form submitted:', form, 'Response:', response);
             setSuccess(true);
-        }, 2000); 
+            alert('Quote created successfully!');
+        } catch (error) {
+            console.error('Error creating quote:', error);
+            alert('Failed to create quote.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -99,13 +108,13 @@ const GetQuote = () => {
                             <option key={index} value={city}>{city}</option>
                         ))}
                     </select>
-                    {errors.destination && <div className="error">{errors.destination}</div>}
+                    {errors.origin && <div className="error">{errors.origin}</div>}
                     <label htmlFor="origin">Origin</label>
                     <select
                         name="origin"
-                        value={form.destination}
+                        value={form.origin}
                         onChange={onChange}
-                        className={errors.destination ? 'inputFieldInvalid' : 'inputField'}
+                        className={errors.origin ? 'inputFieldInvalid' : 'inputField'}
                     >
                         <option value="">Select a city</option>
                         {cities.map((city, index) => (
@@ -148,5 +157,14 @@ const GetQuote = () => {
         </div>
     );
 };
-
-export default GetQuote;
+const mapStateToProps = (store) => {
+    console.log('Redux Store Data:', store);
+    return {
+      isLoggedIn: store.isLoggedIn,
+      username: store.userFirstName,
+      id: store.id,
+    };
+  };
+  
+  export default connect(mapStateToProps)(GetQuote);
+  

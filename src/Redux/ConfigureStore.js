@@ -5,8 +5,7 @@ import {thunk} from 'redux-thunk'
 const securls = new SecureLS();
 
 const getStateFromStorage =()=>{
-    const cargoAuth=securls.get('renas-auth')
-
+    const cargoAuth=securls.get('cargo-auth')
     let stateInLocalStorage ={
         id:undefined,
         isLoggedIn: false, 

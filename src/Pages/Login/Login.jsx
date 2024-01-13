@@ -33,9 +33,7 @@ const Login = (props) => {
       await dispatch(loginHandler(creds));
       navigate("/fdashboard"); 
     } catch (apiError) {
-      setTimeout(() => {
       setErrorMessage(true);
-      },20000)
     }
     setLoading(false);
   };
@@ -51,8 +49,8 @@ const Login = (props) => {
         < h1 className="text-center">Login</h1>
           <Input label="Email" name="userEmail" type="text" onChange={(event) => { setUserEmail(event.target.value); }}></Input>
           <Input label="Password" name="userPassword" type="password"onChange={(event) => {setUserPassword(event.target.value);}}></Input>
-          {errorMessage && (<div className="alert alert-danger" role="alert">Wrong Email Or Password</div>)}
-          <button     className="btn"onClick={onClickLogin}>{loading ? <Spinner /> : 'Login'}</button>
+          {errorMessage && (<div style={{color:'red',width:'100%',marginLeft:'20%',fontSize:'2rem'}} >Wrong Email Or Password</div>)}
+          <button  disabled={!buttonEnabled}   className="btn"onClick={onClickLogin}>{loading ? <Spinner /> : 'Login'}</button>
       </form>
       </div>
       </section>
