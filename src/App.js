@@ -2,18 +2,24 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Pages/Login/Login'
+import FreighterLogin from './Pages/Freighter/FreighterLogin/FreighterLogin'
+import FreighterSignup from './Pages/Freighter/FreighterSignup/FreighterSignup'
 import Home from './Pages/Home/Home'
-import Signup from './Pages/Signup/Signup';
-import FreighterDashboard from './Pages/FreighterDashboard/FreighterDashboard';
-import MyQuotes from './Pages/MyQuotes/MyQuotes';
-import GetQuote from './Pages/GetQuote/GetQuote'; 
-import MyOffers from './Pages/MyOffers/MyOffers'; 
-import UserProfile from './Pages/UserProfile/UserProfile';
+import Login from './Pages/Login/Login';
+import MyQuotes from './Pages/Freighter/MyQuotes/MyQuotes';
+import GetQuote from './Pages/Freighter/GetQuote/GetQuote'; 
+import MyOffers from './Pages/Freighter/MyOffers/MyOffers'; 
+import UserProfile from './Pages/Freighter/UserProfile/UserProfile';
 import HelpPage from './Pages/Help/Help';
-import ContactPage from './Pages/ContactDashboard/Contact';
+import Contact from './Pages/ContactDashboard/ContactDashboard';
 import ContactHomePage from './Pages/ContactHome/ContactHome';
-
+import CarrierSignup from './Pages/Carrier/CarrierSignup/CarrierSignup';
+import CreateCompany from './Pages/Carrier/CreateCompany/CreateCompany';
+import CarrierDashboard from './Pages/Carrier/CarrierDashboard/CarrierDashboard';
+import FreighterDashboard from './Pages/Freighter/FreighterDashboard/FreighterDashboard';
+import CarrierLogin from './Pages/Carrier/CarrierLogin/CarrierLogin';
+import Signup from './Pages/Signup/Signup';
+ 
 class App extends React.Component {
   render() {
     const { isLoggedIn } = this.props;
@@ -23,16 +29,24 @@ class App extends React.Component {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            {isLoggedIn&& <Route path="/login" element={<Login />} />}
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/fdashboard' element={<FreighterDashboard />} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/signup" element={<Signup/>} />
+            <Route path='/fdashboard' element={<FreighterDashboard/>} />
+            <Route path="/flogin" element={<FreighterLogin/>} />
+            <Route path='/fsignup' element={<FreighterSignup />} />
             <Route path='/myquotes' element={<MyQuotes/>} />
             <Route path='/getquote' element={<GetQuote/>} />
             <Route path='/myoffers' element={<MyOffers/>} />
             <Route path='/userprofile' element={<UserProfile />} />
             <Route path='/help' element={<HelpPage/>} />
-            <Route path='/contact' element={<ContactPage/>} />
+            <Route path='/contact' element={<Contact/>} />
             <Route path='/contacthome' element={<ContactHomePage/>} />
+            <Route path='/cdashboard' element={<CarrierDashboard/>} />
+            <Route path='/createcompany' element={<CreateCompany/>} />
+            <Route path='/csignup' element={<CarrierSignup/>} />
+            <Route path="/clogin" element={<CarrierLogin/>} />
+
+
           </Routes>
         </BrowserRouter>
       </div>

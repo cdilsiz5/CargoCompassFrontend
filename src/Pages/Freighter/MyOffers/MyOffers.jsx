@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
-import Spinner from '../../Components/Spinner/Spinner';
+import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import Spinner from '../../../Components/Spinner/Spinner';
 import './MyOffers.css';
 import { connect } from 'react-redux';
 import { fetchOffersByStatus } from './fetchOffers';

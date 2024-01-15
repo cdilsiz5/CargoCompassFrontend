@@ -1,61 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import Input from '../../Components/Input/Input';
+import React from 'react';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { Footer } from '../../Components/Footer/Footer';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
+import './Login.css';
 import heroBanner from '../../Components/Assets/hero-banner.jpg';
-import {Navbar} from '../../Components/Navbar/Navbar';
-import {Footer} from '../../Components/Footer/Footer';
-import Spinner from '../../Components/Spinner/Spinner';
-import {loginHandler} from '../../Redux/authActions';
-import { useNavigate } from "react-router-dom";
 
-
-const Login = (props) => {
-  const [userEmail, setUserEmail] = useState();
-  const [userPassword, setUserPassword] = useState();
-  const [errorMessage, setErrorMessage] = useState();
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Use the useNavigate hook
-
-  useEffect(() => {
-    setErrorMessage(undefined);
-  }, [userEmail, userPassword]);
-
-  const onClickLogin = async (event) => {
-    setLoading(true);
-    const {  dispatch } = props;
-    event.preventDefault();
-     const creds = {
-      userEmail,
-      userPassword,
-    };
-    setErrorMessage(undefined);
-    try {
-      await dispatch(loginHandler(creds));
-      navigate("/fdashboard"); 
-    } catch (apiError) {
-      setErrorMessage(true);
-    }
-    setLoading(false);
-  };
-
-   const buttonEnabled = userEmail && userPassword;
-
+const Login = () => {
   return (
-    <div >
-      <section style={{ backgroundImage: `url(${heroBanner})`}}>
-      <Navbar></Navbar>
-      <div className="loginForm" style={{display:'flow-root'}}>
-      <form className="form-group" style={{marginTop:'200px',marginBottom:'150px'}} >
-        < h1 className="text-center">Login</h1>
-          <Input label="Email" name="userEmail" type="text" onChange={(event) => { setUserEmail(event.target.value); }}></Input>
-          <Input label="Password" name="userPassword" type="password"onChange={(event) => {setUserPassword(event.target.value);}}></Input>
-          {errorMessage && (<div style={{color:'red',width:'100%',marginLeft:'20%',fontSize:'2rem'}} >Wrong Email Or Password</div>)}
-          <button  disabled={!buttonEnabled}   className="btn"onClick={onClickLogin}>{loading ? <Spinner /> : 'Login'}</button>
-      </form>
-      </div>
+    <div>
+      <Navbar />
+      <section className="login-section" style={{ backgroundImage: `url(${heroBanner})` }}>
+        <div className="login-options-container">
+          <div className="login-option-card shipper">
+            <div className="login-option-image-wrapper">
+              <img src="https://www.yolda.com/wp-content/webp-express/webp-images/uploads/2023/04/Content-1001476564-1.jpg.webp" alt="Shipper" className="login-option-image" />
+            </div>
+            <Link to="/flogin" className="login-option-link">
+              <FaArrowRight className="login-option-icon shipper-text" />
+            </Link>
+            <span className="login-option-text"><h2>Log in as a Shipper</h2></span>
+          </div>
+          <div className="login-option-card carrier">
+            <div className="login-option-image-wrapper">
+              <img src="https://www.yolda.com/wp-content/webp-express/webp-images/uploads/2023/04/Inline-162424158-1.jpg.webp" alt="Carrier" className="login-option-image" />
+            </div>
+            <Link to="/clogin" className="login-option-link">
+              <FaArrowRight className="login-option-icon carrier-text" />
+            </Link>
+            <span className="login-option-text"><h2>Log in as a Carrier</h2></span>
+          </div>
+        </div>
       </section>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
-export default connect()(Login);
+
+export default Login;

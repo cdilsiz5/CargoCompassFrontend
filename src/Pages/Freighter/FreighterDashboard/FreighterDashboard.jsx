@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react';
 import { connect } from 'react-redux';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
 import './FreighterDashboard.css';
-import { fetchActiveCargosCount } from '../../Api/ApiCalls';
+import { fetchActiveCargosCount } from '../../../Api/ApiCalls';
 import { Link } from 'react-router-dom';
 
 const FreighterDashboard = (props) => {

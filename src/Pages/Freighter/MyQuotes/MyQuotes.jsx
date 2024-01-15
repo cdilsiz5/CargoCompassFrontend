@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
-import Spinner from '../../Components/Spinner/Spinner';
-import { fetchActiveCargosList } from '../../Api/ApiCalls';
+import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import Spinner from '../../../Components/Spinner/Spinner';
+import { fetchActiveCargosList } from '../../../Api/ApiCalls';
 import './MyQuotes.css';
 
 const MyQuotes = (props) => {

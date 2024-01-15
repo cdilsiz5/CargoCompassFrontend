@@ -1,103 +1,39 @@
-import React, { useState } from "react";
-import Input from '../../Components/Input/Input';
-import axios from "axios";
-import heroBanner from '../../Components/Assets/hero-banner.jpg'
-import {Navbar} from '../../Components/Navbar/Navbar'
-import {Footer} from '../../Components/Footer/Footer'
+import React from 'react';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { Footer } from '../../Components/Footer/Footer';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 import './Signup.css';
-import {API_USER_URL } from "../../Config";
+import heroBanner from '../../Components/Assets/hero-banner.jpg';
 
-const Signup =(props)=>{
-   const [form,setForm]=useState({
-        userFirstName: null,
-        userLastName: null,
-        userPhoneNumber: null,
-        userEmail: null,
-        userPassword: null,
-        userPasswordRepeat: null,
-        pendingApiCall: false,
-        userRole:null
-    })
-    const [errors,setErrors]=useState({});
-    const [success,setSuccess]=useState(false);
-   
-    const onChange = event => {
-        event.preventDefault();
-        setSuccess(false);
-        const { name, value } = event.target;
-        const errorsCopy ={...errors};
-        errorsCopy[name]=undefined;
-       setErrors(errorsCopy)
-       setForm((previousForm)=>({...previousForm,[name]:value}))
-    }
-   
-    const onClickSignup = async event => {
-        event.preventDefault();
-        const { userFirstName, userLastName, userEmail, userPhoneNumber, userPassword, userRole } = form;
-        const body = {
-            userFirstName,
-            userLastName,
-            userEmail,
-            userPhoneNumber,
-            userPassword,
-            userRole
-        };
-    
-        try {           
-            const response = await axios.post(`${API_USER_URL}/api/v1/users/register`, body);
-            if (response.status === 201) {
-                setSuccess(true);
-            }
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.validationErrors) {
-                setErrors(error.response.data.validationErrors);
-            } else {
-                // Handle other types of errors
-                console.error("An error occurred:", error);
-                // Optionally, set a generic error message
-                setErrors({ general: "An error occurred. Please try again later." });
-            }
-        }
-    };
-    const {userFirstName :userFirstNameError,userLastName:userLastNameError,userEmail:userEmailError,userPhoneNumber:userPhoneNumberError,userPassword:userPasswordError} =errors;
-    let userPasswordRepeatError ;
-    if(form.userPassword!==form.userPasswordRepeat){
-        userPasswordRepeatError="Password Mismatch";
-    }
+const Signup = () => {
     return (
         <div>
-            <section style={{ backgroundImage: `url(${heroBanner})`}}>
-            <Navbar></Navbar>
-            <div className="signupForm">
-            <form className="form-group" style={{marginTop:'150px',marginBottom:'75px'}} >
-                <h1 >Sign Up</h1>
-                <Input name="userFirstName" type="text" label="First Name" error={userFirstNameError} onChange={onChange}></Input>
-                <Input name="userLastName"  type="text" label="Last Name" error={userLastNameError} onChange={onChange}></Input>
-                <Input name="userEmail"  type="text" label="Email" error={userEmailError} onChange={onChange}></Input>
-                <Input name="userPhoneNumber" type="text" label="Phone" error={userPhoneNumberError} onChange={onChange}></Input>
-                <Input name="userPassword" type="password" label="Password" error={userPasswordError} onChange={onChange}></Input>
-                <Input name="userPasswordRepeat" type="password" label="Password Repeat" error={userPasswordRepeatError} onChange={onChange}></Input>
-               <div className="input">
-                    <label>Role</label>
-                    <div className="form-check row ">
-                        <label className="form-check-label col-xl-4">
-                            <input type="radio" className="form-check-input" name="userRole"  value="ROLE_CARRIER"  onChange={onChange} /> CARRIER
-                        </label>
-                        <label className="form-check-label col-xl-4">
-                            <input type="radio" className="form-check-input" name="userRole" value="ROLE_FREIGHTER"  onChange={onChange}/> FREIGHTER
-                        </label>
+            <Navbar />
+            <section className="signup-section" style={{ backgroundImage: `url(${heroBanner})` }}>
+                <div className="signup-options-container">
+                    <div className="signup-option-card shipper">
+                        <div className="signup-option-image-wrapper">
+                            <img src="https://www.yolda.com/wp-content/webp-express/webp-images/uploads/2023/04/Content-1001476564-1.jpg.webp" alt="Shipper" className="signup-option-image" />
+                        </div>
+                        <Link to="/fsignup" className="signup-option-link">
+                            <FaArrowRight className="signup-option-icon shipper-text" />
+                        </Link>
+                        <span className="signup-option-text"><h2>Signup as a Shipper</h2></span>
+                    </div>
+                    <div className="signup-option-card carrier">
+                        <div className="signup-option-image-wrapper">
+                            <img src="https://www.yolda.com/wp-content/webp-express/webp-images/uploads/2023/04/Inline-162424158-1.jpg.webp" alt="Carrier" className="signup-option-image" />
+                        </div>
+                        <Link to="/csignup" className="signup-option-link">
+                            <FaArrowRight className="signup-option-icon carrier-text" />
+                        </Link>
+                        <span className="signup-option-text"><h2>Signup as a Carrier</h2></span>
                     </div>
                 </div>
-                <div className="text-center" style={{marginLeft:'auto'}}>
-                    <button disabled={userPasswordRepeatError!==undefined} className="btn" onClick={onClickSignup}>Sign Up</button>
-                    {(success) && <div className="alert alert-success" role="alert">User Created</div>}    
-                </div>
-            </form>
-            </div>
             </section>
-            <Footer></Footer>
+            <Footer />
         </div>
-    );
+    )
 }
-
 export default Signup;

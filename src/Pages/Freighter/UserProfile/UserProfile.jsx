@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
-import Input from '../../Components/Input/Input';
+import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import Input from '../../../Components/Input/Input';
 import './UserProfile.css'; // Bu dosyayı oluşturmanız gerekecek
 
 const UserProfile = () => {
@@ -30,14 +30,12 @@ const UserProfile = () => {
 
   const handleProfileSubmit = (event) => {
     event.preventDefault();
-    // API isteği ile userEmail ve userPhoneNumber güncellenir
     console.log('User profile updated:', userProfile);
     setIsEditingProfile(false);
   };
 
   const handlePasswordSubmit = (event) => {
     event.preventDefault();
-    // API isteği ile şifre güncellenir
     console.log('Password updated:', passwords);
     setIsEditingPassword(false);
   };

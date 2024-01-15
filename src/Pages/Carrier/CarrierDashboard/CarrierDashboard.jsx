@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
-import './DashboardSidebar.css';
+import { Link } from 'react-router-dom';
+import './CarrierDashboard.css';
 import { connect } from 'react-redux';
-import { logoutSuccess } from '../../Redux/authActions';
+import { logoutSuccess } from '../../../Redux/authActions';
 
-const DashboardSidebar = (props) => {
+const CarrierDashboard = (props) => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
   const { isLoggedIn, onLogoutSuccess, username, id } = props;
-  console.log(id)
+
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -28,25 +28,25 @@ const DashboardSidebar = (props) => {
         </div>
         <nav className={`sidebar-nav ${showSidebar ? '' : 'hidden'}`}>
           <Link to='/fdashboard' className="nav-item">
-            <span className="nav-icon">📊</span>
+            <span className="nav-icon">🏠</span> {/* Home icon */}
             <span className="nav-text">Dashboards</span>
           </Link>
           <Link to='/myquotes' className="nav-item">
-            <span className="nav-icon">📦</span>
-            <span className="nav-text">My Quotes</span>
+            <span className="nav-icon">📝</span> {/* Quotes icon */}
+            <span className="nav-text">Quotes</span>
           </Link>
           <Link to='/getquote' className="nav-item">
-            <span className="nav-icon">💰</span>
-            <span className="nav-text">Get Quote</span>
+            <span className="nav-icon">💲</span> {/* Get Quote icon */}
+            <span className="nav-text">My Jobs</span>
           </Link>
           <Link to='/myoffers' className="nav-item">
-            <span className="nav-icon">📄</span>
-            <span className="nav-text">My Offers</span>
+            <span className="nav-icon">📦</span> {/* Offers icon */}
+            <span className="nav-text">Invoice</span>
           </Link>
         </nav>
 
         <div className={`user-bar ${showSidebar ? '' : 'hidden'}`} onClick={toggleProfileOptions}>
-          <span className="user-icon">👤</span>
+          <span className="user-icon">👤</span> {/* User icon */}
           <span className="user-name">{username}</span>
           {showProfileOptions && (
             <div className="profile-dropdown">
@@ -61,6 +61,7 @@ const DashboardSidebar = (props) => {
         <div className="sidebar-footer">
           <Link to='/contact'><button className="help-btn">📞 Contact Us</button></Link>
         </div>
+
       </aside>
     </div>
   );
@@ -72,14 +73,14 @@ const mapStateToProps = (store) => {
     username: store.userFirstName,
     id: store.id,
   }
-
 }
-const mapDispatchProps = (dispatch) => {
+
+const mapDispatchToProps = (dispatch) => {
   return {
     onLogoutSuccess: () => {
       dispatch(logoutSuccess());
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchProps)(DashboardSidebar)
 
+export default connect(mapStateToProps, mapDispatchToProps)(CarrierDashboard);

@@ -30,6 +30,8 @@
   width: 100%;
   max-width: 500px;
   margin-top: 50px;
+  animation: slideDown 0.5s ease-in-out;
+
 }
 
 .cargo-request-form h2 {

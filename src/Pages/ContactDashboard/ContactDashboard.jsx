@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
-import './Contact.css';
+import './ContactDashboard.css';
 
-const ContactPage = () => {
+const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
     name: '',
     email: '',
@@ -19,17 +19,17 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // API'ye form verilerini göndermek için işlemler
     console.log(contactInfo);
   };
 
   return (
-    <div className="contact-page-container">
+    <div className='body'>
+    <div className="contact-page-dashboard-container">
       <DashboardSidebar />
-      <main className="contact-content">
+      <main className="contact-content-dashboard">
         <h1>Contact Us</h1>
         <p>If you have any questions or feedback, please fill out the form below and we'll get back to you as soon as possible.</p>
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form-dashboard" onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
@@ -57,7 +57,8 @@ const ContactPage = () => {
         </form>
       </main>
     </div>
+    </div>
   );
 };
 
-export default ContactPage;
+export default Contact;

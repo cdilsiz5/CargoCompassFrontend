@@ -1,4 +1,4 @@
-import {API_OFFER_URL,API_COMPANY_URL,API_CARGO_URL} from '../../Config'
+import {API_OFFER_URL,API_COMPANY_URL,API_CARGO_URL} from '../../../Config'
 export const fetchOffersByStatus = async (userId, status) => {
      const response = await fetch(`${API_OFFER_URL}/api/v1/offers/user/${userId}?status=${status}`);
     const offers = await response.json();
