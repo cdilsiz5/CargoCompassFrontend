@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import './GetQuote.css'; // CSS dosyasını import edin
-import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../../Components/Dashboard/FreighterDashboard';
 import Input from '../../../Components/Input/Input';
 import { createQuote } from '../../../Api/ApiCalls'; // Import the API call function
 import Spinner from '../../../Components/Spinner/Spinner';

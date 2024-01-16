@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../../Components/Dashboard/FreighterDashboard';
 import Spinner from '../../../Components/Spinner/Spinner';
 import { fetchActiveCargosList } from '../../../Api/ApiCalls';
 import './MyQuotes.css';

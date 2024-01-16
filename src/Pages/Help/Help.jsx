@@ -1,11 +1,10 @@
 import React from 'react';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../Components/Dashboard/FreighterDashboard';
 import './Help.css';
 
 const HelpPage = () => {
   return (
     <div className="help-page-container">
-      <DashboardSidebar />
       <main className="help-content">
         <h1>How Can We Help You Today?</h1>
         <p>Welcome to the Cargo Compass Support Center. Whether you're experiencing issues or just have some questions, we're here to help. Our dedicated team is on deck to steer you in the right direction.</p>
@@ -23,7 +22,6 @@ const HelpPage = () => {
         <div className="faq-section">
           <h2>Frequently Asked Questions</h2>
           <p>For quick answers, check out our FAQ section where you'll find responses to common queries. If you don't find what you're looking for, don't hesitate to reach out.</p>
-          {/* Link to FAQ page or expandable FAQ items here */}
         </div>
       </main>
     </div>

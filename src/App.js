@@ -15,10 +15,10 @@ import Contact from './Pages/ContactDashboard/ContactDashboard';
 import ContactHomePage from './Pages/ContactHome/ContactHome';
 import CarrierSignup from './Pages/Carrier/CarrierSignup/CarrierSignup';
 import CreateCompany from './Pages/Carrier/CreateCompany/CreateCompany';
-import CarrierDashboard from './Pages/Carrier/CarrierDashboard/CarrierDashboard';
-import FreighterDashboard from './Pages/Freighter/FreighterDashboard/FreighterDashboard';
 import CarrierLogin from './Pages/Carrier/CarrierLogin/CarrierLogin';
 import Signup from './Pages/Signup/Signup';
+import CarrierMain from './Pages/Carrier/CarrierMain/CarrierMain';
+import FreighterMain from './Pages/Freighter/FreighterMain/FreighterMain';
  
 class App extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class App extends React.Component {
             <Route path='/home' element={<Home />} />
             <Route path="/login" element={<Login/>} />
             <Route path="/signup" element={<Signup/>} />
-            <Route path='/fdashboard' element={<FreighterDashboard/>} />
+            <Route path='/fdashboard' element={<FreighterMain/>} />
             <Route path="/flogin" element={<FreighterLogin/>} />
             <Route path='/fsignup' element={<FreighterSignup />} />
             <Route path='/myquotes' element={<MyQuotes/>} />
@@ -41,12 +41,10 @@ class App extends React.Component {
             <Route path='/help' element={<HelpPage/>} />
             <Route path='/contact' element={<Contact/>} />
             <Route path='/contacthome' element={<ContactHomePage/>} />
-            <Route path='/cdashboard' element={<CarrierDashboard/>} />
+            <Route path='/cdashboard' element={<CarrierMain/>} />
             <Route path='/createcompany' element={<CreateCompany/>} />
             <Route path='/csignup' element={<CarrierSignup/>} />
             <Route path="/clogin" element={<CarrierLogin/>} />
-
-
           </Routes>
         </BrowserRouter>
       </div>

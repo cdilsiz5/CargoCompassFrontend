@@ -4,7 +4,7 @@
   --primary-color: #007bff;
 }
 
-.dashboard-sidebar {
+.carrier-dashboard-sidebar {
   background-color: #252a48;
   color: white;
   width: 250px;
@@ -19,17 +19,17 @@
   z-index: 1000;
 }
 
-.sidebar-header {
+.carrier-sidebar-header {
   padding: 1rem;
   font-family: var(--ff-oswald);
   border-bottom: 1px solid #1f233e;
 }
 
-.sidebar-nav {
+.carrier-sidebar-nav {
   padding: 1rem 0;
 }
 
-.nav-item {
+.carrier-nav-item {
   padding: 10px 15px;
   display: flex;
   align-items: center;
@@ -37,27 +37,26 @@
   color: white;
   transition: background-color 0.3s;
 }
-
-.nav-item:hover {
-  background-color: darken(var(--primary-color), 10%);
-  color: var(--primary-color);
+.carrier-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
 }
 
-.nav-icon {
+.carrier-nav-icon {
   margin-right: 25px;
 }
 
-.section-title {
+.carrier-section-title {
   color: var(--dark-orange);
   padding: 1rem;
 }
 
-.sidebar-footer {
+.carrier-sidebar-footer {
   padding: 1rem;
   border-top: 1px solid #1f233e;
 }
 
-.help-btn {
+.carrier-help-btn {
   width: 100%;
   padding: 0.5rem;
   background-color: var(--primary-color);
@@ -65,7 +64,7 @@
   border: none;
   border-radius: 5px;
 }
-.help-btn:hover {
+.carrier-help-btn:hover {
   width: 100%;
   padding: 0.5rem;
   background-color: white;
@@ -75,7 +74,7 @@
 }
 
 
-.user-bar {
+.carrier-user-bar {
   display: flex;
   align-items: center;
   justify-content: block;
@@ -90,12 +89,12 @@
   transition: left 0.3s;
   z-index: 1001;
 }
-.user-bar:hover{
+.carrier-user-bar:hover{
   background-color:white;
   border-top: 1px solid black;
   color: white;
  }
-.user-icon {
+.carrier-user-icon {
   display: block;
   width: 32px;
   height: 32px;
@@ -103,12 +102,12 @@
   margin-right: 10px;
 }
 
-.user-name {
+.carrier-user-name {
   font-weight: bold;
   color: white;
 }
 
-.profile-dropdown {
+.carrier-profile-dropdown {
   display: none;
   position: absolute;
   bottom: 50px;
@@ -121,12 +120,12 @@
   z-index: 1002;
 }
 
-.user-bar:hover .profile-dropdown,
-.user-bar.active .profile-dropdown {
+.carrier-user-bar:hover .carrier-profile-dropdown,
+.carrier-user-bar.active .carrier-profile-dropdown {
   display: block;
 }
 
-.logout-btn {
+.carrier-logout-btn {
   display: block;
   width: 100%;
   padding: 0.5rem;
@@ -135,7 +134,7 @@
   border: none;
   cursor: pointer;
 }
-.user-btn {
+.carrier-user-btn {
   display: block;
   width: 100%;
   padding: 0.5rem;
@@ -146,11 +145,11 @@
 }
 
 
-.logout-btn:hover {
+.carrier-logout-btn:hover {
   background-color: #d62839;
 }
 
-.sidebar-toggle {
+.carrier-sidebar-toggle {
   display: none;
   position: fixed;
   top: 10px;
@@ -166,7 +165,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .sidebar-toggle {
+  .carrier-sidebar-toggle {
     display: block; /* Show the toggle button */
     position: fixed; /* Fixed position */
     top: 0; /* At the top */
@@ -179,24 +178,27 @@
     font-size: 20px; /* Bigger to be easily tapped */
   }
 
-  .dashboard-sidebar.collapsed {
+  .carrier-dashboard-sidebar.collapsed {
     min-width: 0;
-    width: 0; /* Hide the sidebar */
+    width: 0;  
     overflow: hidden;
   }
-
-  .sidebar-nav.hidden, .sidebar-section.hidden, .user-bar.hidden {
-    display: none; /* Hide content when sidebar is collapsed */
+  .carrier-sidebar-header {
+    margin-top: 40px;
   }
 
-  .dashboard-sidebar {
+  .carrier-sidebar-nav.hidden, .carrier-sidebar-section.hidden, .carrier-user-bar.hidden {
+    display: none;  
+  }
+
+  .carrier-dashboard-sidebar {
     position: fixed; 
     height: 100vh;
     width: 250px;
     transition: width 0.3s; /* Animated toggle effect */
   }
 
-  .user-bar {
+  .carrier-user-bar {
     position: fixed; /* Fix user bar at the bottom */
     bottom: 0; /* At the bottom */
     left: 0; /* Align left */
@@ -209,14 +211,14 @@
     z-index: 1000; /* Above the sidebar */
   }
 
-  .user-bar .user-icon, .user-bar .user-name {
+  .carrier-user-bar .carrier-user-icon, .carrier-user-bar .carrier-user-name {
     display: inline; /* Show icon and name */
   }
 
 }
 
 @media (min-width: 769px) {
-  .sidebar-toggle {
+  .carrier-sidebar-toggle {
     display: none; 
   }
 }

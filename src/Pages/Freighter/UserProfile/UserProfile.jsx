@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../../Components/Dashboard/FreighterDashboard';
 import Input from '../../../Components/Input/Input';
 import './UserProfile.css'; // Bu dosyayı oluşturmanız gerekecek
 

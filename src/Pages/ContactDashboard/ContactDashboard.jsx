@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../../Components/Dashboard/DashboardSidebar';
 import './ContactDashboard.css';
+import CarrierDashboard from '../../Components/CarrierDashboard/CarrierDashboard';
 
 const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
@@ -25,7 +25,6 @@ const Contact = () => {
   return (
     <div className='body'>
     <div className="contact-page-dashboard-container">
-      <DashboardSidebar />
       <main className="contact-content-dashboard">
         <h1>Contact Us</h1>
         <p>If you have any questions or feedback, please fill out the form below and we'll get back to you as soon as possible.</p>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import DashboardSidebar from '../../../Components/Dashboard/DashboardSidebar';
+import DashboardSidebar from '../../../Components/Dashboard/FreighterDashboard';
 import Spinner from '../../../Components/Spinner/Spinner';
 import './MyOffers.css';
 import { connect } from 'react-redux';
